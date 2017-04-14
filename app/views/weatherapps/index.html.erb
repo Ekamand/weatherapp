@@ -1,0 +1,31 @@
+
+<%= form_tag "", method: :get do %>
+	City: <input type="text" name="city" >
+	State: <input type="text" name="state" >
+	<input type="submit" name="update city">
+<%end%>
+
+<h1> <%= @forcasts["query"]["results"]["channel"]["title"] %> </h1>
+<h3> Last update: <%= @forcasts["query"]["results"]["channel"]["lastBuildDate"] %></h3>
+<h3> Todays weather will be: <%= @forcasts["query"]["results"]["channel"]["item"]["condition"]["temp"] %> degrees</h3>
+<h4> <%= @forcasts["query"]["results"]["channel"]["item"]["condition"]["text"] %></h4>
+
+<h1> Your 5 day will look like </h1>
+
+<% @forcasts["query"]["results"]["channel"]["item"]["forecast"][0]["day"] %> 
+
+<% @forcasts["query"]["results"]["channel"]["item"]["forecast"].each do |day| %> 
+	=================================
+	<h4>Date: <%= day["date"] %></h4>
+	
+	<h4>High: <%= day["high"] %></h4>
+	<h4>Low: <%= day["low"] %></h4>
+	<h4>Description: <%= day["text"] %></h4>
+<% end %>
+
+
+</div>
+</div>
+
+
+
